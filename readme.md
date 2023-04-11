@@ -23,13 +23,13 @@ The source code and the documentation are licensed under either the [Happy Bunny
 
 Thanks for contributing to the project by [submitting pull requests](https://github.com/g-truc/glm/pulls).
 
+The test program below can be found [here](https://github.com/g-truc/glm/blob/master/test/cmake/test_find_glm.cpp) and it displays
+`matrix diagonal: 0.489152, 1.05934, -0.237555, 1`.
+
 ```cpp
-#include <glm/vec3.hpp> // glm::vec3
-#include <glm/vec4.hpp> // glm::vec4
-#include <glm/mat4x4.hpp> // glm::mat4
-#include <glm/ext/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale
-#include <glm/ext/matrix_clip_space.hpp> // glm::perspective
-#include <glm/ext/scalar_constants.hpp> // glm::pi
+#include <iostream>
+#include <glm/glm.hpp>
+#include <glm/ext.hpp>
 
 glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 {
@@ -39,6 +39,14 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 	View = glm::rotate(View, Rotate.x, glm::vec3(0.0f, 1.0f, 0.0f));
 	glm::mat4 Model = glm::scale(glm::mat4(1.0f), glm::vec3(0.5f));
 	return Projection * View * Model;
+}
+
+int main()
+{
+    const glm::mat4 m = camera(1.f, glm::vec2(1.f, 0.5f));
+    std::cout << "matrix diagonal: " << m[0][0] << ", "
+              << m[1][1] << ", " << m[2][2] << ", " << m[3][3] << "\n";
+    return 0;
 }
 ```
 
