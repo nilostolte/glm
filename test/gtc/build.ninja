@@ -1,0 +1,49 @@
+cflags = -O3
+i1 = ../../
+l1 = ../../../w64devkit/x86_64-w64-mingw32/lib
+
+rule cc
+  command = g++ $cflags -I$i1 -c $in -o $out
+rule link
+  command = g++ $cflags -o $out $in -L$l1
+
+build gtc_bitfield.o: cc gtc_bitfield.cpp
+build gtc_color_space.o: cc gtc_color_space.cpp
+build gtc_constants.o: cc gtc_constants.cpp
+build gtc_epsilon.o: cc gtc_epsilon.cpp
+build gtc_integer.o: cc gtc_integer.cpp
+build gtc_matrix_access.o: cc gtc_matrix_access.cpp
+build gtc_matrix_integer.o: cc gtc_matrix_integer.cpp
+build gtc_matrix_inverse.o: cc gtc_matrix_inverse.cpp
+build gtc_matrix_transform.o: cc gtc_matrix_transform.cpp
+build gtc_noise.o: cc gtc_noise.cpp
+build gtc_packing.o: cc gtc_packing.cpp
+build gtc_quaternion.o: cc gtc_quaternion.cpp
+build gtc_random.o: cc gtc_random.cpp
+build gtc_round.o: cc gtc_round.cpp
+build gtc_reciprocal.o: cc gtc_reciprocal.cpp
+build gtc_type_aligned.o: cc gtc_type_aligned.cpp
+build gtc_type_precision.o: cc gtc_type_precision.cpp
+build gtc_type_ptr.o: cc gtc_type_ptr.cpp
+build gtc_ulp.o: cc gtc_ulp.cpp
+build gtc_vec1.o: cc gtc_vec1.cpp
+build gtc_bitfield: link gtc_bitfield.o
+build gtc_color_space: link gtc_color_space.o
+build gtc_constants: link gtc_constants.o
+build gtc_epsilon: link gtc_epsilon.o
+build gtc_integer: link gtc_integer.o
+build gtc_matrix_access: link gtc_matrix_access.o
+build gtc_matrix_integer: link gtc_matrix_integer.o
+build gtc_matrix_inverse: link gtc_matrix_inverse.o
+build gtc_matrix_transform: link gtc_matrix_transform.o
+build gtc_noise: link gtc_noise.o
+build gtc_packing: link gtc_packing.o
+build gtc_quaternion: link gtc_quaternion.o
+build gtc_random: link gtc_random.o
+build gtc_round: link gtc_round.o
+build gtc_reciprocal: link gtc_reciprocal.o
+build gtc_type_aligned: link gtc_type_aligned.o
+build gtc_type_precision: link gtc_type_precision.o
+build gtc_type_ptr: link gtc_type_ptr.o
+build gtc_ulp: link gtc_ulp.o
+build gtc_vec1: link gtc_vec1.o
