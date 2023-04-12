@@ -1,0 +1,21 @@
+cflags = -O3
+i1 = ../../
+l1 = ../../../w64devkit/x86_64-w64-mingw32/lib
+
+rule cc
+  command = g++ $cflags -I$i1 -c $in -o $out
+rule link
+  command = g++ $cflags -o $out $in -L$l1
+
+build perf_matrix_div.o: cc perf_matrix_div.cpp
+build perf_matrix_inverse.o: cc perf_matrix_inverse.cpp
+build perf_matrix_mul.o: cc perf_matrix_mul.cpp
+build perf_matrix_mul_vector.o: cc perf_matrix_mul_vector.cpp
+build perf_matrix_transpose.o: cc perf_matrix_transpose.cpp
+build perf_vector_mul_matrix.o: cc perf_vector_mul_matrix.cpp
+build perf_matrix_div: link perf_matrix_div.o
+build perf_matrix_inverse: link perf_matrix_inverse.o
+build perf_matrix_mul: link perf_matrix_mul.o
+build perf_matrix_mul_vector: link perf_matrix_mul_vector.o
+build perf_matrix_transpose: link perf_matrix_transpose.o
+build perf_vector_mul_matrix: link perf_vector_mul_matrix.o
