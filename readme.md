@@ -48,7 +48,7 @@ and executing the tests on Windows using the w64devkit installation described [h
 
 This procedure can be modified using the tools decribed [here](https://github.com/nilostolte/glm/tree/master/test), namely
 Microsoft Word and VBA scripts for Word presented. This VBA code allows generating build.ninja and Windows script files for
-each directory of tests. Building with ninja is much faster than with any other building tool, whereas the test.bat file
+each directory of tests. Building with ninja is much faster than with any other building tool, whereas the test.bat files
 allows a comprehensive excution of the test programs on any Windows command shell.
 
 The directory containing the fles of this repository can be of any name (it's suggested to be glm) and should be at the 
