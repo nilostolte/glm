@@ -51,6 +51,9 @@ Microsoft Word and VBA scripts for Word presented. This VBA code allows generati
 each directory of tests. Building with ninja is much faster than with any other building tool, whereas the test.bat file
 allows a comprehensive excution of the test programs on any Windows command shell.
 
+The directory containing the fles of this repository can be of any name (it's suggested to be glm) and should be at the 
+same level as w64devkit to make build.ninja work properly, otherwise all build.ninja files must be modified accordingly.
+
 ## [Lastest release](https://github.com/g-truc/glm/releases/latest)
 
 ## Project Health
