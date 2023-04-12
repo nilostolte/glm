@@ -1,0 +1,41 @@
+Sub CMake2bat()
+'
+' CMake2bat Macro
+'
+'
+Dim I As Integer
+Dim P As Integer
+Dim A As Long, B As Long
+Dim Line As String
+Dim Lines() As String
+
+P = Application.ActiveDocument.Paragraphs.Count
+ReDim Lines(P)
+For I = 1 To P
+    Line = Application.ActiveDocument.Paragraphs.Item(I).Range.Text
+    If Len(Line) < 3 Then
+        P = I - 1
+        ReDim Preserve Lines(P)
+        Exit For
+    End If
+    A = InStr(Line, "(") + 1
+    B = InStr(A, Line, ")")
+    Lines(I) = Mid(Line, A, B - A)
+Next I
+
+Application.ActiveDocument.Range.Delete
+
+Application.ActiveDocument.Paragraphs.Add
+Application.ActiveDocument.Paragraphs.Item(1).Range.Text = "@echo off"
+Application.ActiveDocument.Paragraphs.Add
+Application.ActiveDocument.Paragraphs.Item(2).Range.Text = "ECHO RUNNING TESTS"
+
+For I = 1 To P
+    Application.ActiveDocument.Paragraphs.Add
+    Application.ActiveDocument.Paragraphs.Item((I * 3)).Range.Text = "ECHO Testing " + Lines(I)
+    Application.ActiveDocument.Paragraphs.Add
+    Application.ActiveDocument.Paragraphs.Item((I * 3) + 1).Range.Text = """./" + Lines(I) + """"
+    Application.ActiveDocument.Paragraphs.Add
+    Application.ActiveDocument.Paragraphs.Item((I * 3) + 2).Range.Text = "IF %ERRORLEVEL% NEQ 0 ECHO " + Lines(I) + ": %ERRORLEVEL%"
+Next I
+End Sub

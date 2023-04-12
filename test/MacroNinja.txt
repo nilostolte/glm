@@ -1,0 +1,37 @@
+Sub CMake2ninja()
+'
+' CMake2ninja Macro
+'
+'
+Dim I As Integer
+Dim P As Integer
+Dim A As Long, B As Long
+Dim Line As String
+Dim Lines() As String
+
+P = Application.ActiveDocument.Paragraphs.Count
+ReDim Lines(P)
+For I = 1 To P
+    Line = Application.ActiveDocument.Paragraphs.Item(I).Range.Text
+    If Len(Line) < 3 Then
+        P = I - 1
+        ReDim Preserve Lines(P)
+        Exit For
+    End If
+    A = InStr(Line, "(") + 1
+    B = InStr(A, Line, ")")
+    Lines(I) = Mid(Line, A, B - A)
+Next I
+
+Application.ActiveDocument.Range.Delete
+
+For I = 1 To P
+    Application.ActiveDocument.Paragraphs.Add
+    Application.ActiveDocument.Paragraphs.Item(I).Range.Text = "build " + Lines(I) + ".o: cc " + Lines(I) + ".cpp"
+Next I
+
+For I = 1 To P
+    Application.ActiveDocument.Paragraphs.Add
+    Application.ActiveDocument.Paragraphs.Item(I + P).Range.Text = "build " + Lines(I) + ": link " + Lines(I) + ".o"
+Next I
+End Sub
