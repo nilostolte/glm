@@ -1,0 +1,11 @@
+cflags = -O3
+i1 = ../../
+l1 = ../../../w64devkit/x86_64-w64-mingw32/lib
+
+rule cc
+  command = g++ $cflags -I$i1 -c $in -o $out
+rule link
+  command = g++ $cflags -o $out $in -L$l1
+
+build test_find_glm.o: cc test_find_glm.cpp
+build test: link test_find_glm.o
