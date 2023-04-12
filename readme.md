@@ -41,6 +41,15 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 	return Projection * View * Model;
 }
 ```
+## Installing and testing on Windows
+
+[Here](https://github.com/nilostolte/glm/tree/master/test) it's introduced a procedure for building
+and executing the tests on Windows using the w64devkit installation described [here](https://github.com/nilostolte/OpenGL).
+
+This procedure can be modified using the tools decribed [here](https://github.com/nilostolte/glm/tree/master/test), namely
+Microsoft Word and VBA scripts for Word presented. This VBA code allows generating build.ninja and Windows script files for
+each directory of tests. Building with ninja is much faster than with any other building tool, whereas the test.bat file
+allows a comprehensive excution of the test programs on any Windows command shell.
 
 ## [Lastest release](https://github.com/g-truc/glm/releases/latest)
 
