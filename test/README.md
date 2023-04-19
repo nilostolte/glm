@@ -47,12 +47,12 @@ https://github.com/nilostolte/OpenGL
 ## PREPARING THE TEST.BAT SCRIPT
 
 
-This is done by opening CMakeList.txt into Word, 
-pasting the macro MacroBat.txt into the VBA editor of Word, and running
+This is done by opening CMakeList.txt of each one of the directories: core, ext, gtc, gtx, 
+and perf into Word, pasting the macro MacroBat.txt into the VBA editor of Word, and running
 the macro.
 
 Copy the entire content generated in the Word document and paste it in
-a file called test.bat.
+a file called test.bat. 
 
 If the installation coincides with the one seen in https://github.com/nilostolte/OpenGL
 one can use the provided test.bat.
