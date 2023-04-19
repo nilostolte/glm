@@ -68,7 +68,7 @@ To run the tests one simply needs to type:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 All the generated test programs will be called one by one. If there are errors
-they will be displayed otherwise only the message "Testing &lt;program name&gt;"
+they will be displayed otherwise only the message &quot;Testing &lt;program name&gt;&quot;
 will be displayed (where &lt;program name&gt; is the name of the program).
 
 Proceed in the same way in each of the directories: core, ext, gtc, gtx, 
